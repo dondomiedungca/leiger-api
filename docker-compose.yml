@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  postgres:
+    image: 'kartoza/postgis:13.0'
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./data/pg:/var/lib/postgresql/db_data/
+      - ./data/initials:/docker-entrypoint-initdb.d/
+    restart: always
+    environment:
+      POSTGRES_DB: 'skychat_development'
+      POSTGRES_USER: 'skychat'
+      POSTGRES_PASSWORD: 'password'
+volumes:
+  data:
